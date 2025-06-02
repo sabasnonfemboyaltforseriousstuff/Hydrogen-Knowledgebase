@@ -16,7 +16,7 @@ A person who starts being hostile should first receive a verbal warning. If they
 
 ### Hard NSFW
 
-This includes any type of NSFW media, such as stickers, GIFs, emojis, or similar. This results in an instant ban. 
+This includes any type of NSFW media, such as stickers, GIFs, emojis, or similar. This should result in an instant ban. 
 
 ### Light NSFW
 
