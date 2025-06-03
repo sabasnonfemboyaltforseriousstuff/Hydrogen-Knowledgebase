@@ -8,7 +8,7 @@ This is an unofficial moderation guide based on the official one which can be fo
 
 This includes Arguing, Toxic Language, Disrespect, Insults and Harassment.
 
-A person who starts being hostile should first receive a verbal warning. If they continue, then they should be muted for 6 hours.
+A person who starts being hostile should first or continues it after the other person stops shoud receive a verbal warning. If they continue, then they should be muted for 6 hours.
 
 ---
 
