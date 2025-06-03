@@ -5,7 +5,7 @@
 ## Installation
 
 1. **Run the installation script**
-    - Copy the script from <#1060376974813573120>
+    - Copy the script from [this channel](https://discord.com/channels/924722337981530132/1060376974813573120)
     - Open the Terminal app
     - Paste the script in and press Enter
 2. **Enter your password**
