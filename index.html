@@ -1,284 +1,408 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Frequently Asked Questions</title>
-<style>
-body {
-  background-color: #191919; 
-  color: #f0f0f0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  overflow-x: hidden;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydrogen - FAQ</title>
+    <link rel="icon" type="image/png" href="logo.png?v=1">
+    <link rel="shortcut icon" type="image/png" href="logo.png?v=1">
 
-.header-container {
-  text-align: center;
-  width: 80%;
-  max-width: 800px;
-  margin-bottom: 40px;
-}
+    <style>
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-}
+        html {
+            height: 100%;
+        }
 
-.divider {
-  width: 100%;
-  height: 1px;
-  background-color: rgba(128, 128, 128, 0.5);
-  margin-top: 10px;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-.faq-item {
-  width: 80%;
-  max-width: 800px;
-  margin-bottom: 15px;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
 
-.faq-question {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 10px 0;
-  font-size: 1.2em;
-  font-weight: bold;
-}
+        header {
+            background-color: #1a1a1a;
+            border-bottom: 1px solid #333;
+            flex-shrink: 0;
+            z-index: 100;
+        }
 
-.faq-question svg.arrow-icon {
-  width: 12px;
-  height: 12px;
-  margin-right: 8px;
-  transition: transform 0.3s ease;
-  transform: rotate(90deg);
-  flex-shrink: 0;
-}
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            max-width: none;
+            margin: 0;
+        }
 
-.faq-question.active svg.arrow-icon {
-  transform: rotate(180deg);
-}
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
 
-.faq-description {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  transition: max-height 0.35s ease-out,
-              opacity 0.3s ease-in-out,
-              padding-top 0.35s ease-out,
-              padding-bottom 0.35s ease-out,
-              visibility 0s linear 0.35s;
-  font-size: 1em;
-  line-height: 1.6;
-  color: #cccccc;
-  text-align: left;
-  padding-left: 20px;
-  padding-top: 0;
-  padding-bottom: 0;
-}
+        .header-logo-img {
+            height: 3.3rem;
+        }
 
-.faq-description.show {
-  opacity: 1;
-  visibility: visible;
-  padding-top: 10px;
-  padding-bottom: 15px;
-  transition-delay: 0s;
-}
+        .header-logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffffff;
+            line-height: 1.2;
+        }
 
-.faq-description p {
-  margin-top: 0.5em;
-  margin-bottom: 1em;
-}
-.faq-description p:first-child {
-  margin-top: 0;
-}
-.faq-description p:last-child {
-  margin-bottom: 0;
-}
+        main {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
 
-pre.code-block {
-  background-color: #252525;
-  border: 1px solid #444;
-  padding: 12px;
-  border-radius: 5px;
-  overflow-x: auto;
-  text-align: left;
-  margin: 15px 0;
-  max-width: 100%;
-  box-sizing: border-box;
-}
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
 
-pre.code-block code {
-  font-family: "SF Mono", "Courier New", Courier, monospace;
-  color: #d0d0d0;
-  font-size: 0.9em;
-  white-space: pre-wrap;
-  word-break: break-all;
-  background-color: transparent;
-  padding: 0;
-}
+        .faq-item {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-code {
-  background-color: #2c2c2c;
-  padding: 3px 6px;
-  border-radius: 4px;
-  font-family: "SF Mono", "Courier New", Courier, monospace;
-  font-size: 0.9em;
-  color: #ffffff;
-}
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            font-size: 1.2em;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
 
-.faq-description ul {
-  list-style-type: none;
-  padding-left: 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: left;
-}
+        .faq-question:hover {
+            background-color: #252525;
+        }
 
-.faq-description ul li {
-  margin-bottom: 8px;
-}
+        .faq-question span {
+            padding-right: 1rem;
+        }
 
-.faq-description a {
-  color: #8ab4f8;
-  text-decoration: none;
-  font-weight: bold;
-}
+        .faq-arrow {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
 
-.faq-description a:hover {
-  text-decoration: underline;
-}
+        .faq-question.active .faq-arrow {
+            transform: rotate(180deg);
+        }
 
-</style>
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out;
+            color: #ccc;
+            font-size: 1em;
+        }
+
+        .faq-answer-content {
+            padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 1em;
+        }
+        .faq-answer-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer-content a {
+            color: #4a9eff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .faq-answer-content a:hover {
+            text-decoration: underline;
+        }
+
+        .faq-answer-content code {
+            background-color: #2c2c2c;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: "SF Mono", "Courier New", Courier, monospace;
+            font-size: 0.9em;
+            color: #e0e0e0;
+        }
+
+        .faq-answer-content pre.code-block {
+            background-color: #0f0f0f;
+            border: 1px solid #333;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            max-width: 100%;
+        }
+
+        .faq-answer-content pre.code-block code {
+            background-color: transparent;
+            padding: 0;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .faq-answer-content ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+            }
+
+            main {
+                overflow-y: visible;
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .header-content {
+                padding: 1rem;
+            }
+
+            .header-logo-img {
+                height: 3.5rem;
+            }
+
+            .header-logo-text {
+                font-size: 1.4rem;
+            }
+
+            .faq-question {
+                font-size: 1.1em;
+                padding: 1rem 1.25rem;
+                align-items: flex-start;
+            }
+
+            .faq-question span {
+                padding-right: 0.75rem;
+            }
+
+            .faq-arrow {
+                margin-top: 0.1em;
+            }
+
+            .faq-answer-content {
+                padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-logo-text {
+                font-size: 1.2rem;
+            }
+            .logo-area {
+                gap: 0.5rem;
+            }
+
+            .faq-question {
+                font-size: 1em;
+            }
+
+            .faq-answer {
+                font-size: 0.95em;
+            }
+        }
+
+    </style>
 </head>
 <body>
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <img src="./logo.png" alt="Hydrogen Logo" class="header-logo-img">
+                <span class="header-logo-text">Frequently Asked Questions</span>
+            </div>
+        </div>
+    </header>
 
-<div class="header-container">
-  <h1>Frequently Asked Questions</h1>
-  <div class="divider"></div>
-</div>
+    <main>
+        <div class="container">
+            <div class="faq-list">
 
-<div class="faq-item">
-  <div class="faq-question">
-    <svg class="arrow-icon" viewBox="0 0 512.00 512.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>triangle-filled</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="drop" fill="#ffffff" transform="translate(32.000000, 42.666667)"> <path d="M246.312928,5.62892705 C252.927596,9.40873724 258.409564,14.8907053 262.189374,21.5053731 L444.667042,340.84129 C456.358134,361.300701 449.250007,387.363834 428.790595,399.054926 C422.34376,402.738832 415.04715,404.676552 407.622001,404.676552 L42.6666667,404.676552 C19.1025173,404.676552 7.10542736e-15,385.574034 7.10542736e-15,362.009885 C7.10542736e-15,354.584736 1.93772021,347.288125 5.62162594,340.84129 L188.099293,21.5053731 C199.790385,1.04596203 225.853517,-6.06216498 246.312928,5.62892705 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
-    My script doesn't work or crashes
-  </div>
-  <div class="faq-description">
-    <p>Not all scripts are compatible with Hydrogen. If a script doesn't work, it's either outdated or not compatible with Hydrogen. You will need to use a different script.</p>
-  </div>
-</div>
+                <div class="faq-item">
+                  <div class="faq-question">
+                    <span>My script doesn't work or crashes</span>
+                    <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-content">
+                      <p>Not all scripts are compatible with Hydrogen. If a script doesn't work, it's either outdated or not compatible with Hydrogen. You will need to use a different script.</p>
+                    </div>
+                  </div>
+                </div>
 
-<div class="faq-item">
-  <div class="faq-question">
-    <svg class="arrow-icon" viewBox="0 0 512.00 512.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>triangle-filled</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="drop" fill="#ffffff" transform="translate(32.000000, 42.666667)"> <path d="M246.312928,5.62892705 C252.927596,9.40873724 258.409564,14.8907053 262.189374,21.5053731 L444.667042,340.84129 C456.358134,361.300701 449.250007,387.363834 428.790595,399.054926 C422.34376,402.738832 415.04715,404.676552 407.622001,404.676552 L42.6666667,404.676552 C19.1025173,404.676552 7.10542736e-15,385.574034 7.10542736e-15,362.009885 C7.10542736e-15,354.584736 1.93772021,347.288125 5.62162594,340.84129 L188.099293,21.5053731 C199.790385,1.04596203 225.853517,-6.06216498 246.312928,5.62892705 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
-    How to auto-execute
-  </div>
-  <div class="faq-description">
-    <p>To auto-execute a script, open TextEdit, create a new document, and paste your script into it. Save it by pressing <code>CMD + S</code> and move it to the "autoexecute" folder within your Hydrogen folder. The file must be in .txt format, so you'll need to change its extension. In Finder, rename the file to end with .txt, for example, change "script.rtf" to "script.txt". When a pop-up asks if you want to use .txt, click "Use .txt".</p>
-  </div>
-</div>
+                <div class="faq-item">
+                  <div class="faq-question">
+                    <span>How to auto-execute</span>
+                    <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-content">
+                      <p>To auto-execute a script, open TextEdit, create a new document, and paste your script into it. Save it by pressing <code>CMD + S</code> and move it to the "autoexecute" folder within your Hydrogen folder. The file must be in .txt format, so you'll need to change its extension. In Finder, rename the file to end with .txt, for example, change "script.rtf" to "script.txt". When a pop-up asks if you want to use .txt, click "Use .txt".</p>
+                    </div>
+                  </div>
+                </div>
 
-<div class="faq-item">
-  <div class="faq-question">
-    <svg class="arrow-icon" viewBox="0 0 512.00 512.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>triangle-filled</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="drop" fill="#ffffff" transform="translate(32.000000, 42.666667)"> <path d="M246.312928,5.62892705 C252.927596,9.40873724 258.409564,14.8907053 262.189374,21.5053731 L444.667042,340.84129 C456.358134,361.300701 449.250007,387.363834 428.790595,399.054926 C422.34376,402.738832 415.04715,404.676552 407.622001,404.676552 L42.6666667,404.676552 C19.1025173,404.676552 7.10542736e-15,385.574034 7.10542736e-15,362.009885 C7.10542736e-15,354.584736 1.93772021,347.288125 5.62162594,340.84129 L188.099293,21.5053731 C199.790385,1.04596203 225.853517,-6.06216498 246.312928,5.62892705 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
-    No HTTP server on ports 6969–7069
-  </div>
-  <div class="faq-description">
-    <p>A port error usually means you haven't entered a key. To fix this, close both Roblox and Hydrogen. Then, open Roblox. And a pop-up asking for your key should appear before the app opens. Paste your key inside it, and Roblox will open normally. After that, you can then open Hydrogen and execute scripts freely.</p>
-  </div>
-</div>
+                <div class="faq-item">
+                  <div class="faq-question">
+                    <span>No HTTP server on ports 6969–7069</span>
+                    <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-content">
+                      <p>A port error usually means you haven't entered a key. To fix this, close both Roblox and Hydrogen. Then, open Roblox. And a pop-up asking for your key should appear before the app opens. Paste your key inside it, and Roblox will open normally. After that, you can then open Hydrogen and execute scripts freely.</p>
+                    </div>
+                  </div>
+                </div>
 
-<div class="faq-item">
-  <div class="faq-question">
-    <svg class="arrow-icon" viewBox="0 0 512.00 512.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>triangle-filled</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="drop" fill="#ffffff" transform="translate(32.000000, 42.666667)"> <path d="M246.312928,5.62892705 C252.927596,9.40873724 258.409564,14.8907053 262.189374,21.5053731 L444.667042,340.84129 C456.358134,361.300701 449.250007,387.363834 428.790595,399.054926 C422.34376,402.738832 415.04715,404.676552 407.622001,404.676552 L42.6666667,404.676552 C19.1025173,404.676552 7.10542736e-15,385.574034 7.10542736e-15,362.009885 C7.10542736e-15,354.584736 1.93772021,347.288125 5.62162594,340.84129 L188.099293,21.5053731 C199.790385,1.04596203 225.853517,-6.06216498 246.312928,5.62892705 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
-    How to remove Hydrogen
-  </div>
-  <div class="faq-description">
-    <p>To remove Hydrogen from your Mac, you can use the script below.</p>
-    <pre class="code-block"><code>cd && curl -LJs "https://raw.githubusercontent.com/nullstate9/roblox-stuff/refs/heads/main/executors/hydro-uninstaller.sh" -o "./hydro-uninstaller.sh" && chmod +x hydro-uninstaller.sh && sudo ./hydro-uninstaller.sh</code></pre>
-    <p>Keep in mind that the script will keep the Hydrogen folder inside your home directory. It reinstalls the normal version of Roblox and removes the Hydrogen app. You can use it to play safely if Hydrogen is detected. If you want a full manual uninstall, delete both Roblox and Hydrogen, along with their folders, and then reinstall Roblox from the website.</p>
-  </div>
-</div>
+                <div class="faq-item">
+                  <div class="faq-question">
+                    <span>How to remove Hydrogen</span>
+                    <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-content">
+                      <p>To remove Hydrogen from your Mac, you can use the script below.</p>
+                      <pre class="code-block"><code>cd && curl -LJs "https://raw.githubusercontent.com/nullstate9/roblox-stuff/refs/heads/main/executors/hydro-uninstaller.sh" -o "./hydro-uninstaller.sh" && chmod +x hydro-uninstaller.sh && sudo ./hydro-uninstaller.sh</code></pre>
+                      <p>Keep in mind that the script will keep the Hydrogen folder inside your home directory. It reinstalls the normal version of Roblox and removes the Hydrogen app. You can use it to play safely if Hydrogen is detected. If you want a full manual uninstall, delete both Roblox and Hydrogen, along with their folders, and then reinstall Roblox from the website.</p>
+                    </div>
+                  </div>
+                </div>
 
-<div class="faq-item">
-  <div class="faq-question">
-    <svg class="arrow-icon" viewBox="0 0 512.00 512.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>triangle-filled</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="drop" fill="#ffffff" transform="translate(32.000000, 42.666667)"> <path d="M246.312928,5.62892705 C252.927596,9.40873724 258.409564,14.8907053 262.189374,21.5053731 L444.667042,340.84129 C456.358134,361.300701 449.250007,387.363834 428.790595,399.054926 C422.34376,402.738832 415.04715,404.676552 407.622001,404.676552 L42.6666667,404.676552 C19.1025173,404.676552 7.10542736e-15,385.574034 7.10542736e-15,362.009885 C7.10542736e-15,354.584736 1.93772021,347.288125 5.62162594,340.84129 L188.099293,21.5053731 C199.790385,1.04596203 225.853517,-6.06216498 246.312928,5.62892705 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
-    Is my Mac supported
-  </div>
-  <div class="faq-description">
-    <p>Both Intel and Silicon Macs are supported, as long as they are running macOS 11 or newer. You can check your version by typing <code>sw_vers</code> in the Terminal app.</p>
-  </div>
-</div>
+                <div class="faq-item">
+                  <div class="faq-question">
+                    <span>Is my Mac supported</span>
+                    <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-content">
+                      <p>Both Intel and Silicon Macs are supported, as long as they are running macOS 11 or newer. You can check your version by typing <code>sw_vers</code> in the Terminal app.</p>
+                    </div>
+                  </div>
+                </div>
 
-<div class="faq-item">
-  <div class="faq-question">
-    <svg class="arrow-icon" viewBox="0 0 512.00 512.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>triangle-filled</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="drop" fill="#ffffff" transform="translate(32.000000, 42.666667)"> <path d="M246.312928,5.62892705 C252.927596,9.40873724 258.409564,14.8907053 262.189374,21.5053731 L444.667042,340.84129 C456.358134,361.300701 449.250007,387.363834 428.790595,399.054926 C422.34376,402.738832 415.04715,404.676552 407.622001,404.676552 L42.6666667,404.676552 C19.1025173,404.676552 7.10542736e-15,385.574034 7.10542736e-15,362.009885 C7.10542736e-15,354.584736 1.93772021,347.288125 5.62162594,340.84129 L188.099293,21.5053731 C199.790385,1.04596203 225.853517,-6.06216498 246.312928,5.62892705 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
-    Is Hydrogen Supported on Mobile or Windows devices
-  </div>
-  <div class="faq-description">
-    <p>Currently, Hydrogen is supported on Mac devices only, but an iOS version is going to release soon. The Android version has been discontinued, and there's no Windows version.</p>
-  </div>
-</div>
+                <div class="faq-item">
+                  <div class="faq-question">
+                    <span>Is Hydrogen Supported on Mobile or Windows devices</span>
+                    <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-content">
+                      <p>Currently, Hydrogen is supported on Mac devices only, but an iOS version is going to release soon. The Android version has been discontinued, and there's no Windows version.</p>
+                    </div>
+                  </div>
+                </div>
 
-<div class="faq-item">
-  <div class="faq-question">
-    <svg class="arrow-icon" viewBox="0 0 512.00 512.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>triangle-filled</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="drop" fill="#ffffff" transform="translate(32.000000, 42.666667)"> <path d="M246.312928,5.62892705 C252.927596,9.40873724 258.409564,14.8907053 262.189374,21.5053731 L444.667042,340.84129 C456.358134,361.300701 449.250007,387.363834 428.790595,399.054926 C422.34376,402.738832 415.04715,404.676552 407.622001,404.676552 L42.6666667,404.676552 C19.1025173,404.676552 7.10542736e-15,385.574034 7.10542736e-15,362.009885 C7.10542736e-15,354.584736 1.93772021,347.288125 5.62162594,340.84129 L188.099293,21.5053731 C199.790385,1.04596203 225.853517,-6.06216498 246.312928,5.62892705 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
-    Where do I find scripts
-  </div>
-  <div class="faq-description">
-    <p>You can find scripts on the websites listed below. However, please keep in mind that Hydrogen doesn't actively monitor these sites, and they may contain malicious scripts, so be sure to check them carefully. Also, please avoid asking for scripts in the server, as some people have been sending malicious scripts through DMs. If someone sends you a script that you think is malicious, please make a ticket and report it.</p>
-    <ul>
-      <li><a href="https://rscripts.net/" target="_blank" rel="noopener noreferrer"><code>https://rscripts.net/</code></a></li>
-      <li><a href="https://rbxscript.com/" target="_blank" rel="noopener noreferrer"><code>https://rbxscript.com/</code></a></li>
-      <li><a href="https://robloxscripts.com/" target="_blank" rel="noopener noreferrer"><code>https://robloxscripts.com/</code></a></li>
-      <li><a href="https://scriptblox.com/" target="_blank" rel="noopener noreferrer"><code>https://scriptblox.com/</code></a></li>
-      <li><a href="https://scriptpastebin.com/" target="_blank" rel="noopener noreferrer"><code>https://scriptpastebin.com/</code></a></li>
-    </ul>
-  </div>
-</div>
+                <div class="faq-item">
+                  <div class="faq-question">
+                    <span>Where do I find scripts</span>
+                    <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-content">
+                      <p>You can find scripts on the websites listed below. However, please keep in mind that Hydrogen doesn't actively monitor these sites, and they may contain malicious scripts, so be sure to check them carefully. Also, please avoid asking for scripts in the server, as some people have been sending malicious scripts through DMs. If someone sends you a script that you think is malicious, please make a ticket and report it.</p>
+                      <ul>
+                        <li><a href="https://rscripts.net/" target="_blank" rel="noopener noreferrer"><code>https://rscripts.net/</code></a></li>
+                        <li><a href="https://rbxscript.com/" target="_blank" rel="noopener noreferrer"><code>https://rbxscript.com/</code></a></li>
+                        <li><a href="https://robloxscripts.com/" target="_blank" rel="noopener noreferrer"><code>https://robloxscripts.com/</code></a></li>
+                        <li><a href="https://scriptblox.com/" target="_blank" rel="noopener noreferrer"><code>https://scriptblox.com/</code></a></li>
+                        <li><a href="https://scriptpastebin.com/" target="_blank" rel="noopener noreferrer"><code>https://scriptpastebin.com/</code></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
 
-<div class="faq-item">
-  <div class="faq-question">
-    <svg class="arrow-icon" viewBox="0 0 512.00 512.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>triangle-filled</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="drop" fill="#ffffff" transform="translate(32.000000, 42.666667)"> <path d="M246.312928,5.62892705 C252.927596,9.40873724 258.409564,14.8907053 262.189374,21.5053731 L444.667042,340.84129 C456.358134,361.300701 449.250007,387.363834 428.790595,399.054926 C422.34376,402.738832 415.04715,404.676552 407.622001,404.676552 L42.6666667,404.676552 C19.1025173,404.676552 7.10542736e-15,385.574034 7.10542736e-15,362.009885 C7.10542736e-15,354.584736 1.93772021,347.288125 5.62162594,340.84129 L188.099293,21.5053731 C199.790385,1.04596203 225.853517,-6.06216498 246.312928,5.62892705 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
-    What is Hydrogen’s sUNC
-  </div>
-  <div class="faq-description">
-    <p>Hydrogen is at 96% sUNC. It's currently missing <code>replicatesignal</code>, <code>newcclosure</code>, and <code>getcallbackvalue</code>. You can click <a href="https://sunc.rubis.app/?scrap=5qh7GIfCDb8WZjtp&key=3Hq4Uz3Oc3X9G34ROz12ODY4VJIwXuUH" target="_blank" rel="noopener noreferrer">here</a> to view the score yourself.</p>
-  </div>
-</div>
+                <div class="faq-item">
+                  <div class="faq-question">
+                    <span>What is Hydrogen’s sUNC</span>
+                    <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-content">
+                      <p>Hydrogen is at 96% sUNC. It's currently missing <code>replicatesignal</code>, <code>newcclosure</code>, and <code>getcallbackvalue</code>. You can click <a href="https://sunc.rubis.app/?scrap=5qh7GIfCDb8WZjtp&key=3Hq4Uz3Oc3X9G34ROz12ODY4VJIwXuUH" target="_blank" rel="noopener noreferrer">here</a> to view the score yourself.</p>
+                    </div>
+                  </div>
+                </div>
 
-<div class="faq-item">
-  <div class="faq-question">
-    <svg class="arrow-icon" viewBox="0 0 512.00 512.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>triangle-filled</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="drop" fill="#ffffff" transform="translate(32.000000, 42.666667)"> <path d="M246.312928,5.62892705 C252.927596,9.40873724 258.409564,14.8907053 262.189374,21.5053731 L444.667042,340.84129 C456.358134,361.300701 449.250007,387.363834 428.790595,399.054926 C422.34376,402.738832 415.04715,404.676552 407.622001,404.676552 L42.6666667,404.676552 C19.1025173,404.676552 7.10542736e-15,385.574034 7.10542736e-15,362.009885 C7.10542736e-15,354.584736 1.93772021,347.288125 5.62162594,340.84129 L188.099293,21.5053731 C199.790385,1.04596203 225.853517,-6.06216498 246.312928,5.62892705 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
-    Does Hydrogen support multiple instances
-  </div>
-  <div class="faq-description">
-    <p>Currently, Hydrogen does not support multiple instances. It's an upcoming feature and will be added later. However, there is a way to use multiple instances without Hydrogen. Click <a href="https://appleblox.com/" target="_blank" rel="noopener noreferrer">here</a> to get AppleBlox, a Roblox launcher that supports launching multiple instances.</p>
-  </div>
-</div>
+                <div class="faq-item">
+                  <div class="faq-question">
+                    <span>Does Hydrogen support multiple instances</span>
+                    <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-content">
+                      <p>Currently, Hydrogen does not support multiple instances. It's an upcoming feature and will be added later. However, there is a way to use multiple instances without Hydrogen. Click <a href="https://appleblox.com/" target="_blank" rel="noopener noreferrer">here</a> to get AppleBlox, a Roblox launcher that supports launching multiple instances.</p>
+                    </div>
+                  </div>
+                </div>
 
+            </div>
+        </div>
+    </main>
 
-<script>
-document.querySelectorAll('.faq-question').forEach(question => {
-  question.addEventListener('click', () => {
-    const description = question.nextElementSibling;
-    const isActive = question.classList.toggle('active');
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.toggle('active');
 
-    if (isActive) {
-      description.classList.add('show');
-      description.style.maxHeight = description.scrollHeight + 'px';
-    } else {
-      description.classList.remove('show');
-      description.style.maxHeight = '0';
-    }
-  });
-});
-</script>
-
+                if (isActive) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    answer.addEventListener('transitionend', function handler() {
+                        answer.removeEventListener('transitionend', handler);
+                        if (question.classList.contains('active')) {
+                            answer.style.maxHeight = 'none';
+                        }
+                    });
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    requestAnimationFrame(() => {
+                        answer.style.maxHeight = '0';
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
