@@ -57,6 +57,7 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            text-decoration: none;
         }
 
         .header-logo-img {
@@ -76,23 +77,24 @@
 
         #faq-search {
             padding: 0.6rem 0.85rem;
-            background-color: #2c2c2c;
-            border: 1px solid #444;
-            border-radius: 6px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
             color: #e0e0e0;
             font-size: 1rem;
             width: 300px;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: all 0.2s ease;
         }
 
         #faq-search:focus {
             outline: none;
-            border-color: #4a9eff;
-            box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.25);
+            background-color: #252525;
+            border-color: #444;
+            box-shadow: none;
         }
 
         #faq-search::placeholder {
-            color: #888;
+            color: #666;
         }
 
         main {
@@ -205,10 +207,15 @@
             word-break: break-all;
         }
 
-        .faq-answer-content ul {
+        .faq-answer-content ul, .faq-answer-content ol {
             list-style-type: none;
             padding-left: 0;
             margin: 1rem 0;
+        }
+        
+        .faq-answer-content > p + ol, .faq-answer-content > p + ul {
+            margin-top: -0.5em;
+            margin-bottom: 1em;
         }
 
         @media (max-width: 992px) {
@@ -296,10 +303,10 @@
 <body>
     <header>
         <div class="header-content">
-            <div class="logo-area">
+            <a href="https://discord.gg/gethydrogen" target="_blank" rel="noopener noreferrer" class="logo-area">
                 <img src="./logo.png" alt="Hydrogen Logo" class="header-logo-img">
                 <span class="header-logo-text">Frequently Asked Questions</span>
-            </div>
+            </a>
             <div class="search-container">
                 <input type="text" id="faq-search" placeholder="Search...">
             </div>
@@ -371,12 +378,52 @@
 
                 <div class="faq-item">
                   <div class="faq-question">
+                    <span>How to get thru the key system</span>
+                    <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>There are many different offers so I have narrowed them down into three different categories instead of making a tutorial for EVERY offer.</p>
+                        
+                        <p><strong>App Downloads</strong></p>
+                        <ol style="list-style-type: decimal; list-style-position: inside; padding-left: 1em;">
+                            <li style="margin-bottom: 0.5em;">Click the download button and stay on the download page for 45 seconds</li>
+                            <li style="margin-bottom: 0.5em;">Go back to the Work.ink tab after 45 seconds</li>
+                            <li>Remove the downloaded file</li>
+                        </ol>
+                        
+                        <p><strong>Browser Extensions</strong></p>
+                        <ol style="list-style-type: decimal; list-style-position: inside; padding-left: 1em;">
+                            <li style="margin-bottom: 0.5em;">Install the extension</li>
+                            <li style="margin-bottom: 0.5em;">Go back to the Work.ink tab</li>
+                            <li>Remove the extension after step completion</li>
+                        </ol>
+
+                        <p><strong>Sign ups</strong></p>
+                        <ol style="list-style-type: decimal; list-style-position: inside; padding-left: 1em;">
+                            <li style="margin-bottom: 0.5em;">Click the sign up button</li>
+                            <li style="margin-bottom: 0.5em;">Go to their website and stay there for 45 seconds</li>
+                            <li>Go back to the Work.ink tab after 45 seconds</li>
+                        </ol>
+                        
+                        <p><strong>Extra</strong></p>
+                        <ul style="list-style-type: disc; padding-left: 2em; list-style-position: outside;">
+                            <li style="margin-bottom: 0.5em;">Keep in mind that if you go back to the Work.ink tab before the 45 second timer is over you WILL have to start over again.</li>
+                            <li style="margin-bottom: 0.5em;">Disable all ad blockers or any extensions that may interfere with Work.ink</li>
+                            <li>This shouldn’t take longer than 5 minutes (if it does you’re probably doing it wrong :3)</li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <div class="faq-question">
                     <span>My script doesn't work or crashes</span>
                     <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                   </div>
                   <div class="faq-answer">
                     <div class="faq-answer-content">
-                      <p>Not all scripts are compatible with Hydrogen. If a script doesn't work, it's either outdated or not compatible with Hydrogen. You will need to use a different script.</p>
+                      <p>Not all scripts are compatible with Hydrogen. If a script doesn't work, it's either outdated or not compatible with Hydrogen. You can report non-functional scripts <a href="https://discord.com/channels/924722337981530132/1367839253588869141" target="_blank" rel="noopener noreferrer">here</a>.</p>
                     </div>
                   </div>
                 </div>
@@ -451,7 +498,7 @@
                   <div class="faq-answer">
                     <div class="faq-answer-content">
                       <p>You can find scripts on the websites listed below. However, please keep in mind that Hydrogen doesn't actively monitor these sites, and they may contain malicious scripts, so be sure to check them carefully. Also, please avoid asking for scripts in the server, as some people have been sending malicious scripts through DMs. If someone sends you a script that you think is malicious, please make a ticket and report it.</p>
-                      <ul>
+                      <ul style="list-style-type: none; padding-left: 0;">
                         <li><a href="https://rscripts.net/" target="_blank" rel="noopener noreferrer"><code>https://rscripts.net/</code></a></li>
                         <li><a href="https://rbxscript.com/" target="_blank" rel="noopener noreferrer"><code>https://rbxscript.com/</code></a></li>
                         <li><a href="https://robloxscripts.com/" target="_blank" rel="noopener noreferrer"><code>https://robloxscripts.com/</code></a></li>
