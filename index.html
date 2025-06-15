@@ -218,6 +218,45 @@
             margin-bottom: 1em;
         }
 
+        #saba-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        #saba-image {
+            max-width: 80vw;
+            max-height: 80vh;
+            opacity: 0;
+            transform: scale(0.1);
+        }
+
+        #saba-container.animate #saba-image {
+            animation: growAndFade 3s ease-out forwards;
+        }
+
+        @keyframes growAndFade {
+            0% {
+                transform: scale(0.1);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+
+
         @media (max-width: 992px) {
             #faq-search {
                 width: 220px;
@@ -473,7 +512,7 @@
                   </div>
                   <div class="faq-answer">
                     <div class="faq-answer-content">
-                      <p>Both Intel and Silicon Macs are supported, as long as they are running macOS 11 or newer. You can check your version by typing <code>sw_vers</code> in the Terminal app.</p>
+                      <p>Both Intel and Silicon Macs are supported, as long as they are running macOS 11 or newer (Yes, even Tahoe). You can check your version by typing <code>sw_vers</code> in the Terminal app.</p>
                     </div>
                   </div>
                 </div>
@@ -533,6 +572,32 @@
                   </div>
                 </div>
 
+                <div class="faq-item">
+                  <div class="faq-question">
+                    <span>Permission denied (os error)</span>
+                    <svg class="faq-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>Check if you are an administrator</strong></p>
+                        <ol style="list-style-type: decimal; list-style-position: inside; padding-left: 1em; margin-bottom: 1em;">
+                            <li style="margin-bottom: 0.5em;">Open Settings and go to “Users & Groups”</li>
+                            <li>Check if your account is listed as an Admin</li>
+                        </ol>
+
+                        <p><strong>Give Terminal Full Disk Access</strong></p>
+                        <ol style="list-style-type: decimal; list-style-position: inside; padding-left: 1em; margin-bottom: 1em;">
+                            <li style="margin-bottom: 0.5em;">Open Settings and go to “Privacy & Security”</li>
+                            <li style="margin-bottom: 0.5em;">Go to “Full Disk Access”</li>
+                            <li style="margin-bottom: 0.5em;">Press the plus icon at the bottom</li>
+                            <li>Add Terminal to the list</li>
+                        </ol>
+
+                        <p>If that didn’t fix the error make a ticket.</p>
+                    </div>
+                  </div>
+                </div>
+
             </div>
         </div>
     </main>
@@ -569,5 +634,56 @@
             });
         });
     </script>
+    
+    <div id="saba-container">
+        <img id="saba-image" src="saba.png" alt="Saba">
+    </div>
+    <audio id="saba-sound" src="laugh.mp3" preload="auto"></audio>
+
+    <script>
+        const sabaCode = ['s', 'a', 'b', 'a'];
+        let keySequence = [];
+
+        document.addEventListener('keydown', (e) => {
+            if (document.activeElement === searchInput) {
+                return;
+            }
+            
+            const key = e.key.toLowerCase();
+            keySequence.push(key);
+
+            if (keySequence.length > sabaCode.length) {
+                keySequence.shift();
+            }
+
+            if (JSON.stringify(keySequence) === JSON.stringify(sabaCode)) {
+                triggerSaba();
+                keySequence = [];
+            }
+        });
+
+        function triggerSaba() {
+            const container = document.getElementById('saba-container');
+            const image = document.getElementById('saba-image');
+            const sound = document.getElementById('saba-sound');
+            if (!container || !image || !sound) return;
+
+            if (container.classList.contains('animate')) {
+                return;
+            }
+
+            sound.currentTime = 0;
+            sound.play();
+
+            container.style.display = 'flex';
+            container.classList.add('animate');
+
+            image.addEventListener('animationend', () => {
+                container.classList.remove('animate');
+                container.style.display = 'none';
+            }, { once: true });
+        }
+    </script>
+
 </body>
 </html>
